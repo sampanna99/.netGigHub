@@ -199,6 +199,7 @@
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\viewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +218,10 @@
     <Compile Include="Migrations\201609050101417_PopulateGenresTable.cs" />
     <Compile Include="Migrations\201609050101417_PopulateGenresTable.Designer.cs">
       <DependentUpon>201609050101417_PopulateGenresTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609060123501_AddForeignKeyPropertiesToGig.cs" />
+    <Compile Include="Migrations\201609060123501_AddForeignKeyPropertiesToGig.Designer.cs">
+      <DependentUpon>201609060123501_AddForeignKeyPropertiesToGig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -314,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609050101417_PopulateGenresTable.resx">
       <DependentUpon>201609050101417_PopulateGenresTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609060123501_AddForeignKeyPropertiesToGig.resx">
+      <DependentUpon>201609060123501_AddForeignKeyPropertiesToGig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

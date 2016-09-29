@@ -18,7 +18,7 @@ namespace GigHub.Models
 
         public Notification Notification { get; private set; } // we set the set to private since we always want the usernotification in valid state
 
-        public bool IsRead { get; set; }
+        public bool IsRead { get; private set; }
 
         protected UserNotification() // we changed it to protected since we don't want to use it anywhere except for entity framework at runtime
         {
@@ -37,6 +37,10 @@ namespace GigHub.Models
 
             User = user;
             Notification = notification;
+        }
+        public void Read()
+        {
+            IsRead = true;
         }
 
     }

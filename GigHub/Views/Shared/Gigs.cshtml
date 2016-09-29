@@ -3,7 +3,18 @@
     ViewBag.Title = "Home Page";
 }
 <h1>@Model.Heading</h1>
-<ul class="gigs voffset4">
+@using (Html.BeginForm("Search", "Gigs"))
+{<div class="form-group">
+     <div id="searchGigs" class="input-group">
+         @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control" })
+         <span class="input-group-addon">
+             <i class="glyphicon glyphicon-search"></i>
+         </span>
+     </div>
+    </div>
+}
+
+<ul id="gigs" class="gigs voffset4">
     @foreach (var gig in Model.UpcomingGigs)
     {
         <li>
@@ -17,7 +28,9 @@
             </div>
             <div class="details">
                 <span class="artist">
+                    <a href="@Url.Action("Details", "Gigs", new { id = gig.ID})">
                     @gig.Artist.Name
+                     </a>
 
                     @if (gig.IsCanceled)
                     {
@@ -26,6 +39,7 @@
 
                     @if (Model.ShowActions)
                     {
+                        
                         <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@gig.ArtistId">Follow</button>
                     }
                 </span>
@@ -34,31 +48,19 @@
                 </span>
                 @if (Model.ShowActions && !gig.IsCanceled)
                 {
-                    <button data-gig-id="@gig.ID" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+                    <button data-gig-id="@gig.ID" class="btn @(Model.Attendances.Contains(gig.ID) ? "btn-info" : "btn-default") btn-sm pull-right js-toggle-attendance">Going?</button>
                 }
 
             </div>
         </li>
-    }
-
-
+        }
 </ul>
 
 @section scripts
 {
  <script>
      $(document).ready(function () {
-         $(".js-toggle-attendance").click(function (e) {
-             var button = $(e.target)
-             $.post("/api/attendances", { gigId: button.attr("data-gig-id")})
-             .done(function () {
-                 button.removeClass("btn-default").addClass("btn-info").text("Going");
-             })
-
-             .fail(function () {
-                 alert("something failed!")
-             });
-         });
+         GigsController.init("#gigs");
 
          $(".js-toggle-follow").click(function (e) {
 
@@ -74,9 +76,5 @@
          });
 
      });
-
-
-     
-
     </script>   
 }

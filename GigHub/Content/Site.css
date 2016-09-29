@@ -36,6 +36,14 @@ span.field-validation-error {
 .voffset5 { margin-top: 80px;}
 
 /*Bootstrap Overrides*/
+
+.popover {
+
+    box-shadow: none;
+    -webkit-box-shadow: none;
+
+}
+
 .navbar-inverse {
     background-color: #ff4342;
     border-color: #ff4342;
@@ -47,6 +55,20 @@ span.field-validation-error {
     .navbar-inverse .navbar-brand {
     color: #fff;
 }
+    .navbar-inverse .notifications {
+        position: relative;
+
+    }
+
+    .navbar-inverse .notifications .badge {
+        position: absolute;
+        top: 8px;
+        right: -1px;
+        background: #a80a0a;
+
+    }
+
+
     .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: chocolate;
 }
@@ -166,3 +188,30 @@ border-radius: 9px;
     .gigs > li:hover .actions {
     display: block;
     }
+
+  .popover-notifications .popover-content {
+       padding: 0;
+  }
+
+  .popover-notifications ul.notifications {
+      list-style: none;
+        padding-left: 0;
+  }
+
+  .popover-notifications ul.notifications > li{
+       border-bottom: 1px solid #ddd;
+        padding: 10px;
+  }
+
+  .popover-notifications ul.notifications > li:last-child {
+      border-bottom: none;
+  }
+
+  .popover-notifications ul.notifications .highlight {
+      font-weight: bold;
+  }
+
+#searchGigs {
+    width: 300px;
+
+}
